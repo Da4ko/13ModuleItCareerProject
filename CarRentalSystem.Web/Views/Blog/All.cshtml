@@ -1,0 +1,274 @@
+﻿@model AllBlogViewModel
+@{
+	ViewData["Title"] = "Latest News & Article";
+}
+
+<section class="news-section pt-70 pb-80 pt-50-p overflow-hidden">
+	<div class="container">
+		@if (this.User.Identity!.IsAuthenticated)
+		{
+			<div class="add-button-container">
+				<a asp-area="" asp-controller="Blog" asp-action="Add" class="btn btn-primary add-button">
+					<i class="fas fa-plus"></i>
+					<span class="tooltip-text">Add new blog post</span>
+				</a>
+			</div>
+		}
+		<h3 class="section-title center mb-60">@ViewData["Title"]</h3>
+		<div class="box grid-4 grid-1-t">
+			@foreach (var blog in Model.Blogs)
+			{
+				<partial name="_BlogCardPartial" model="@blog" />
+			}
+		</div>
+	</div>
+</section>
+
+<style>
+	.add-button-container {
+		position: absolute;
+		top: 9em;
+		left: 1em;
+		padding: 10px;
+	}
+
+	.add-button {
+		top: 30px;
+		position: relative;
+	}
+
+	.tooltip {
+		display: inline-block;
+		position: relative;
+		cursor: pointer;
+		transition: transform 0.3s;
+	}
+
+	.add-button:hover .tooltip {
+		transform: scale(1.2);
+	}
+
+	.tooltip-text {
+		visibility: hidden;
+		opacity: 0;
+		position: absolute;
+		top: -26px;
+		left: 144%;
+		transform: translateX(-50%);
+		background-color: #333;
+		color: #fff;
+		padding: 5px 10px;
+		border-radius: 4px;
+		white-space: nowrap;
+		font-size: 11px;
+		pointer-events: none;
+		transition: opacity 0.3s;
+	}
+
+	.add-button:hover .tooltip-text {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	.overflow-hidden {
+		overflow: hidden;
+	}
+
+	.pb-80 {
+		padding-bottom: 80px;
+	}
+
+	.pt-70 {
+		padding-top: 70px;
+	}
+
+	.overflow-hidden {
+		overflow: hidden;
+	}
+
+	.container {
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
+		max-width: 1260px;
+	}
+
+	* {
+		margin: 0;
+		margin-right: 0px;
+		margin-left: 0px;
+	}
+
+	*, ::before, ::after {
+		box-sizing: border-box;
+	}
+
+	.section-title {
+		font-size: 34px;
+		/* ReSharper disable once CssNotResolved */
+		font-family: var(--main-font-medium);
+	}
+
+	.mb-60 {
+		margin-bottom: 100px;
+	}
+
+	.center {
+		text-align: center;
+	}
+
+	.grid-4 {
+		grid-template-columns: repeat(4, 1fr);
+	}
+
+	.grid-2, .grid-3, .grid-4, .grid-5, .grid-6 {
+		display: grid;
+		gap: 25px;
+	}
+
+	a {
+		text-decoration: none;
+	}
+
+	.d-flex {
+		display: flex;
+		display: -webkit-flex;
+	}
+
+	ul, figure {
+		margin: 0;
+	}
+
+	figure {
+		margin: 0 0 1em;
+	}
+
+	.lazyloaded {
+		opacity: 1;
+		transition: opacity 400ms;
+		transition-delay: 0s;
+		transition-delay: 0ms;
+	}
+
+	.object-fit {
+		object-fit: cover;
+	}
+
+	.news-section [data-body="special"] {
+		background: rgb(230, 230, 230);
+		padding: 15px 20px 20px 15px;
+		margin-top: -52px;
+		position: relative;
+	}
+
+	.black-1 {
+		color: rgba(0, 0, 0, 0.74);
+	}
+
+	.w-90 {
+		width: 90%;
+	}
+
+	.h-100 {
+		height: 100%;
+	}
+
+	.two-line {
+		-webkit-line-clamp: 2;
+	}
+
+	.one-line, .three-line, .four-line, .five-line, .two-line {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+	}
+
+	.mb-15 {
+		margin-bottom: 15px;
+	}
+
+	.trans {
+		transition: 0.4s;
+	}
+
+	.news-section .news-link .desc {
+		height: 84px;
+	}
+
+	.gray-2 {
+		color: #646464;
+	}
+
+	.three-line {
+		-webkit-line-clamp: 3;
+	}
+
+	.one-line, .three-line, .four-line, .five-line, .two-line {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+	}
+
+	.line-28 {
+		line-height: 28px;
+	}
+
+	.mb-25 {
+		margin-bottom: 25px;
+	}
+
+	.font-14 {
+		font-size: 14px;
+	}
+
+	.gap-40 {
+		gap: 40px;
+	}
+
+	.align-center {
+		align-items: center;
+	}
+
+	.d-flex {
+		display: flex;
+		display: -webkit-flex;
+	}
+
+	.text-dark {
+		color: #777;
+	}
+
+	.gap-10 {
+		gap: 10px;
+	}
+
+	.align-center {
+		align-items: center;
+	}
+
+	.d-flex {
+		display: flex;
+		display: -webkit-flex;
+	}
+
+	.news-section .news-link:hover .trans {
+		color: #94CA21;
+	}
+
+	.fa, .fa-brands, .fa-classic, .fa-regular, .fa-sharp, .fa-solid, .fab, .far, .fas {
+		-moz-osx-font-smoothing: grayscale;
+		-webkit-font-smoothing: antialiased;
+		display: var(--fa-display,inline-block);
+		font-style: normal;
+		font-variant: normal;
+		line-height: 1;
+		text-rendering: auto;
+	}
+
+	.fa {
+		font-family: var(--fa-style-family,"Font Awesome 6 Free");
+		font-weight: var(--fa-style,900);
+	}
+</style>

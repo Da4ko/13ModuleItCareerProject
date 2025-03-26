@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>aspnet-CarRentalSystem.Web-ec7226e8-1689-47b5-8a18-170fec9d5d3a</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\img-src\**" />
+    <Content Remove="wwwroot\img-src\**" />
+    <EmbeddedResource Remove="wwwroot\img-src\**" />
+    <None Remove="wwwroot\img-src\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="6.0.16" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="6.0.20" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="6.0.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.20" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.20">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.16" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CarRentalSystem.Common\CarRentalSystem.Common.csproj" />
+    <ProjectReference Include="..\CarRentalSystem.Data.Models\CarRentalSystem.Data.Models.csproj" />
+    <ProjectReference Include="..\CarRentalSystem.Data\CarRentalSystem.Data.csproj" />
+    <ProjectReference Include="..\CarRentalSystem.Services.Data.Models\CarRentalSystem.Services.Data.Models.csproj" />
+    <ProjectReference Include="..\CarRentalSystem.Services.Data\CarRentalSystem.Services.Data.csproj" />
+    <ProjectReference Include="..\CarRentalSystem.Web.Infrastructure\CarRentalSystem.Web.Infrastructure.csproj" />
+    <ProjectReference Include="..\CarRentalSystem.WebViewModels\CarRentalSystem.Web.ViewModels.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\Identity\Pages\Account\" />
+  </ItemGroup>
+
+</Project>
